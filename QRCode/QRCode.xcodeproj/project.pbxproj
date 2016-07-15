@@ -17,6 +17,7 @@
 		0C3D71851D39153500962027 /* Scanning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C3D71841D39153500962027 /* Scanning.storyboard */; };
 		0C3D71871D39194700962027 /* GeneratorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3D71861D39194700962027 /* GeneratorController.swift */; };
 		0C3D71891D39333000962027 /* DetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3D71881D39333000962027 /* DetectorController.swift */; };
+		0C3D718B1D393D5100962027 /* ScanningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3D718A1D393D5100962027 /* ScanningController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		0C3D71841D39153500962027 /* Scanning.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Scanning.storyboard; sourceTree = "<group>"; };
 		0C3D71861D39194700962027 /* GeneratorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratorController.swift; sourceTree = "<group>"; };
 		0C3D71881D39333000962027 /* DetectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectorController.swift; sourceTree = "<group>"; };
+		0C3D718A1D393D5100962027 /* ScanningController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				0C3D71841D39153500962027 /* Scanning.storyboard */,
+				0C3D718A1D393D5100962027 /* ScanningController.swift */,
 			);
 			path = Scanning;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C3D716C1D39106300962027 /* ViewController.swift in Sources */,
+				0C3D718B1D393D5100962027 /* ScanningController.swift in Sources */,
 				0C3D71891D39333000962027 /* DetectorController.swift in Sources */,
 				0C3D716A1D39106300962027 /* AppDelegate.swift in Sources */,
 				0C3D71871D39194700962027 /* GeneratorController.swift in Sources */,
