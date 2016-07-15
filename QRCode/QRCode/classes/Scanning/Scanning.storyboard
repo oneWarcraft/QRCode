@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--扫描二维码-->
         <scene sceneID="UGz-4X-tdn">
             <objects>
-                <viewController id="EcK-qW-FY6" sceneMemberID="viewController">
+                <viewController title="扫描二维码" id="EcK-qW-FY6" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g9N-VL-oeS"/>
                         <viewControllerLayoutGuide type="bottom" id="6Vw-OO-IVp"/>
