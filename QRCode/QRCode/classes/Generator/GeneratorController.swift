@@ -44,15 +44,31 @@ extension GeneratorController {
         let inputData = inputMsg.dataUsingEncoding(NSUTF8StringEncoding)
         filter.setValue(inputData, forKey: "inputMessage")
         
+        // 设置二维码的容错率
+        filter.setValue("H", forKey: "inputCorrectionLevel")
+        
         // 2.3.获取生成的二维码图片
         guard let outputImage = filter.outputImage else {
             return
         }
+        
+        // 3.生成高清的图片
+        let hdImage = createHDImage(outputImage)
+        
 
-        print(outputImage)
+        print(hdImage)
         
         // 3.将生成的二维码显示在imageView中
-        imageView.image = UIImage(CIImage: outputImage)
+        imageView.image = hdImage
+    }
+    
+    private func createHDImage(ciImage: CIImage) -> UIImage {
+        // 1. 放大图片
+        let transform = CGAffineTransformMakeScale(10, 10)
+        let newCIImage = ciImage.imageByApplyingTransform(transform)
+
+        // 2. 创建UIImage对象
+        return UIImage(CIImage: newCIImage)
     }
 }
 
