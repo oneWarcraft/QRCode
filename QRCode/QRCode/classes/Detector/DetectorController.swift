@@ -10,13 +10,23 @@ import UIKit
 
 class DetectorController: UIViewController {
     // MARK:- 控件属性
-    @IBOutlet weak var ImageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var showResults_Lable: UILabel!
     
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        // 1.获取当前显示的图片
+        let currentImage = imageView.image!
+        
+        // 2.识别二维码
+        let resultArray = QRCodeManager.shareInstance.detectorQRCode(currentImage)
+        for result in resultArray {
+            print(result)
+        }
+    }
 }
 
 extension DetectorController {
-    
     @IBAction func albumOpen() {
         // 1.判断照片源是否可用
         if !UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
@@ -44,39 +54,13 @@ extension DetectorController : UINavigationControllerDelegate, UIImagePickerCont
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         // 将图片设置到imageView中
-        ImageView.image = image
+        imageView.image = image
         
         // 退出控制器
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
-
-extension DetectorController {
-    // 点击界面任意处，识别出二维码内容
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        // 1.获取当前显示的图片
-        let currentImage = ImageView.image
-        
-        // 2.将UIImage转成CIImage
-        let ciImage = CIImage(image: currentImage!)
-        
-        // 3.创建探测器
-        let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: nil)
-        
-        // 4.弹出ciImage中所有的二维码
-        let resultArray = detector.featuresInImage(ciImage!)
-        
-        // 5.遍历数据,拿到所有的二维码
-        for feature in resultArray {
-            let qrCodeFeature = feature as! CIQRCodeFeature
-            showResults_Lable.text = showResults_Lable.text?.stringByAppendingString(qrCodeFeature.messageString)
-            
-            print(qrCodeFeature.messageString)
-        }
-    }
-}
 
 
 

@@ -10,13 +10,10 @@ import UIKit
 import AVFoundation
 
 class ScanningController: UIViewController {
-//class ScanningController: UIViewController {
-    
     @IBOutlet weak var scanLineBottomCons: NSLayoutConstraint!
     @IBOutlet weak var scanBgView: UIView!
     
     var session : AVCaptureSession?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,62 +34,28 @@ extension ScanningController {
         
         // 2.执行动画
         UIView.animateWithDuration(1.5) { () -> Void in
+            
             UIView.setAnimationRepeatCount(MAXFLOAT)
             
             self.scanBgView.layoutIfNeeded()
         }
     }
     
+    
     private func startScanning() {
-        // 1.创建输入(摄像头)
-        let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        guard let input = try? AVCaptureDeviceInput(device: device) else {
-            print("获取摄像头过程中有异常")
-            return
-        }
-        
-        // 2.创建输出(Metadata)
-        let output = AVCaptureMetadataOutput()
-        output.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
-        
-        // 3. 创建会话，联系输入和输出
-        let session = AVCaptureSession()
-        session.addInput(input)
-        session.addOutput(output)
-        output.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
-        self.session = session
-
-        // 4. 添加预览图片
-        let layer = AVCaptureVideoPreviewLayer(session: session)
-        layer.frame = view.bounds
-        self.view.layer.insertSublayer(layer, atIndex: 0)
-        
-        // 5. 指定扫描区域
-        let ScreenSize = UIScreen.mainScreen().bounds.size
-        let x : CGFloat = (ScreenSize.height - 240) * 0.5 / ScreenSize.height
-        let y : CGFloat = (ScreenSize.width - 240) * 0.5 / ScreenSize.width
-        let w : CGFloat = 240 / ScreenSize.height
-        let h : CGFloat = 240 / ScreenSize.width
-        output.rectOfInterest = CGRect(x: x, y: y, width: w, height: h)
-        
-        
-        // 6. 开始扫描
-        session.startRunning()
-        
+        QRCodeManager.shareInstance.startScannning(self, inView: view)
     }
 }
 
-extension ScanningController: AVCaptureMetadataOutputObjectsDelegate {
+
+extension ScanningController : AVCaptureMetadataOutputObjectsDelegate {
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
-//        print("扫描结果")
-        
         for objc in metadataObjects {
             let qrCodeObject = objc as! AVMetadataMachineReadableCodeObject
             print(qrCodeObject.stringValue)
             
+            QRCodeManager.shareInstance.stopScanning()
         }
-        
     }
 }
-
 

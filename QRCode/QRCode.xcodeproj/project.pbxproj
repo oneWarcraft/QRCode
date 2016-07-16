@@ -18,6 +18,7 @@
 		0C3D71871D39194700962027 /* GeneratorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3D71861D39194700962027 /* GeneratorController.swift */; };
 		0C3D71891D39333000962027 /* DetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3D71881D39333000962027 /* DetectorController.swift */; };
 		0C3D718B1D393D5100962027 /* ScanningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3D718A1D393D5100962027 /* ScanningController.swift */; };
+		0CCEF90B1D3A752600E265F9 /* QRCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEF90A1D3A752600E265F9 /* QRCodeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		0C3D71861D39194700962027 /* GeneratorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratorController.swift; sourceTree = "<group>"; };
 		0C3D71881D39333000962027 /* DetectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectorController.swift; sourceTree = "<group>"; };
 		0C3D718A1D393D5100962027 /* ScanningController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningController.swift; sourceTree = "<group>"; };
+		0CCEF90A1D3A752600E265F9 /* QRCodeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		0C3D717B1D39146C00962027 /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				0CCEF9091D3A751B00E265F9 /* Tools */,
 				0C3D717D1D39146C00962027 /* Generator */,
 				0C3D717C1D39146C00962027 /* Detector */,
 				0C3D717F1D39146C00962027 /* Scanning */,
@@ -120,6 +123,14 @@
 				0C3D718A1D393D5100962027 /* ScanningController.swift */,
 			);
 			path = Scanning;
+			sourceTree = "<group>";
+		};
+		0CCEF9091D3A751B00E265F9 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0CCEF90A1D3A752600E265F9 /* QRCodeManager.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C3D716C1D39106300962027 /* ViewController.swift in Sources */,
+				0CCEF90B1D3A752600E265F9 /* QRCodeManager.swift in Sources */,
 				0C3D718B1D393D5100962027 /* ScanningController.swift in Sources */,
 				0C3D71891D39333000962027 /* DetectorController.swift in Sources */,
 				0C3D716A1D39106300962027 /* AppDelegate.swift in Sources */,
