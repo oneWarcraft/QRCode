@@ -62,12 +62,23 @@ extension ScanningController {
         output.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
         self.session = session
 
+        // 4. 添加预览图片
+        let layer = AVCaptureVideoPreviewLayer(session: session)
+        layer.frame = view.bounds
+        self.view.layer.insertSublayer(layer, atIndex: 0)
     }
 }
 
 extension ScanningController: AVCaptureMetadataOutputObjectsDelegate {
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
-        print("扫描结果")
+//        print("扫描结果")
+        
+        for objc in metadataObjects {
+            let qrCodeObject = objc as! AVMetadataMachineReadableCodeObject
+            print(qrCodeObject.stringValue)
+            
+        }
+        
     }
 }
 
