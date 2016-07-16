@@ -66,6 +66,19 @@ extension ScanningController {
         let layer = AVCaptureVideoPreviewLayer(session: session)
         layer.frame = view.bounds
         self.view.layer.insertSublayer(layer, atIndex: 0)
+        
+        // 5. 指定扫描区域
+        let ScreenSize = UIScreen.mainScreen().bounds.size
+        let x : CGFloat = (ScreenSize.height - 240) * 0.5 / ScreenSize.height
+        let y : CGFloat = (ScreenSize.width - 240) * 0.5 / ScreenSize.width
+        let w : CGFloat = 240 / ScreenSize.height
+        let h : CGFloat = 240 / ScreenSize.width
+        output.rectOfInterest = CGRect(x: x, y: y, width: w, height: h)
+        
+        
+        // 6. 开始扫描
+        session.startRunning()
+        
     }
 }
 
